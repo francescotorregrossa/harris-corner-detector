@@ -1,21 +1,21 @@
 ## Harris corner detector
 
-Given an image ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;I(p)) where ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;p) represents the coordinates of a pixel, it's possible to detect if the local neighbourhood of ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;p) contains a corner by using the [Harris corner detector](https://en.wikipedia.org/wiki/Harris_Corner_Detector).
+Given an image ![](https://render.githubusercontent.com/render/math?math=I(p)) where ![](https://render.githubusercontent.com/render/math?math=p) represents the coordinates of a pixel, it's possible to detect if the local neighbourhood of ![](https://render.githubusercontent.com/render/math?math=p) contains a corner by using the [Harris corner detector](https://en.wikipedia.org/wiki/Harris_Corner_Detector).
 
 The standard implementation works by using the autocorrelation matrix
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cmu%28p%29%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Csum_%7Bq%20%5Cin%20N%7D%20I_x%5E2%28q%29%20%26%20%5Csum_%7Bq%20%5Cin%20N%7D%20I_x%28q%29I_y%28q%29%20%5C%5C%20%5Csum_%7Bq%20%5Cin%20N%7D%20I_x%28q%29I_y%28q%29%20%26%20%5Csum_%7Bq%20%5Cin%20N%7D%20I_y%5E2%28q%29%20%5C%5C%20%5Cend%7Bbmatrix%7D" />
+<img src="https://render.githubusercontent.com/render/math?math=%5Cmu(p)%20%3D%20%5Cbegin%7Bbmatrix%7D%5Csum_%7Bq%20%5Cin%20N%7D%20I_x%5E2(q)%20%26%20%5Csum_%7Bq%20%5Cin%20N%7D%20I_x(q)I_y(q)%20%5C%5C%5Csum_%7Bq%20%5Cin%20N%7D%20I_x(q)I_y(q)%20%26%20%5Csum_%7Bq%20%5Cin%20N%7D%20I_y%5E2(q)%20%5C%5C%5Cend%7Bbmatrix%7D" />
 </p>
 
-where ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;I_x) and ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;I_y) are the partial derivatives of ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;I). The determinant and the trace of this matrix are high respectively when there is a corner and when there is an edge or corner. Thus, we can define the matrix ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;H(p)) such that ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;H(p)&space;\gg&space;0) when there is a corner and ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;H(p)&space;\ll&space;0) when there is an edge as
+where ![](https://render.githubusercontent.com/render/math?math=I_x) and ![](https://render.githubusercontent.com/render/math?math=I_y) are the partial derivatives of ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;I). The determinant and the trace of this matrix are high respectively when there is a corner and when there is an edge or corner. Thus, we can define the matrix ![](https://render.githubusercontent.com/render/math?math=H(p)) such that ![](https://render.githubusercontent.com/render/math?math=H(p)%20%5Cgg%200) when there is a corner and ![](https://render.githubusercontent.com/render/math?math=H(p)%20%5Cll%200) when there is an edge as
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20H%28p%29%20%3D%20%5Cdet%28%5Cmu%28p%29%29%20-%20k%20%5Cmathrm%7Btr%7D%5E2%28%5Cmu%28p%29%29" />
+<img src="https://render.githubusercontent.com/render/math?math=H(p)%20%3D%20%5Cdet(%5Cmu(p))%20-%20k%20%5Cmathrm%7Btr%7D%5E2(%5Cmu(p))" />
 </p>
 
-with a normalisation factor ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;k) which is typically in the range ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;[0.04,&space;0.16]).
+with a normalisation factor ![](https://render.githubusercontent.com/render/math?math=k) which is typically in the range ![](https://render.githubusercontent.com/render/math?math=%5B0.04%2C%200.16%5D).
 
-We can then define a corner as a point ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;p) in ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;H(p)) such that ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;p) is a local maximum and that ![](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;H(p)&space;>&space;t&space;>&space;0).
+We can then define a corner as a point ![](https://render.githubusercontent.com/render/math?math=p) in ![](https://render.githubusercontent.com/render/math?math=H(p)) such that ![](https://render.githubusercontent.com/render/math?math=p) is a local maximum and that ![](https://render.githubusercontent.com/render/math?math=H(p)%20%5Cgt%20t%20%5Cgt%200).
 
 
 

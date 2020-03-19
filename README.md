@@ -25,10 +25,14 @@ This implementation is only meant to be used to study the topic. It has a fixed 
 
 ```matlab
 [H, keypoints, result] = harris(img, n, t);
+figure; imshow(H, []);
+figure; imshow(result);
 ```
 
 The function takes a grayscale `img` and returns the matrix `H` of size `[h, w]`, the list of `keypoints` which consists of two columns (representing the indexes `i, j` of each corner pixel), and the image `result` obtained by overlaying the keypoints (represented as red pixels) over the input image.
 
+![](original.png) <br> Original | ![](harris.png) <br> Harris transform with `n=3` and `t=0.01` | ![](result.png) <br> Original overlayed with keypoints (result)
+:----:|:----:|:----:
 
 ### About
 The algorithm used comes from the section 2.1 in the paper [Improving Harris corner selection strategy](https://digital-library.theiet.org/content/journals/10.1049/iet-cvi.2009.0127).

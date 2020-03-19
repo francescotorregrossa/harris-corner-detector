@@ -58,15 +58,10 @@ for i = 1+n:h-n
     end
 end
 
-red = img;
-green = red;
-blue = red;
-kp = keypoints(:, 1) + (keypoints(:, 2) - 1) * h;
-red(kp) = 255;
-result = zeros([h, w, 3]);
-result(:, :, 1) = red;
-result(:, :, 2) = green;
-result(:, :, 3) = blue;
-result = uint8(result);
+result = uint8(img);
+[kpts, ~] = size(keypoints);
+for k = 1:kpts
+    result = insertMarker(result, [keypoints(k, 2) keypoints(k, 1)], 'x', 'color', 'red');
+end
 
 end

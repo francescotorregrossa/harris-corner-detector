@@ -1,3 +1,5 @@
+> Developed with [Giuseppe Marino](https://github.com/giuseppe16180)
+
 ## Harris corner detector
 
 Given an image ![](https://render.githubusercontent.com/render/math?math=I(p)) where ![](https://render.githubusercontent.com/render/math?math=p) represents the coordinates of a pixel, it's possible to detect if the local neighbourhood of ![](https://render.githubusercontent.com/render/math?math=p) contains a corner by using the [Harris corner detector](https://en.wikipedia.org/wiki/Harris_Corner_Detector).
